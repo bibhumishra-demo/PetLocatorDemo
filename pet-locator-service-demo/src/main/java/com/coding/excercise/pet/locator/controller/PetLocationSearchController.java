@@ -8,8 +8,8 @@ import org.springframework.web.bind.annotation.RestController;
 import com.coding.excercise.pet.locator.Reponse.PetLocationResponse;
 import com.coding.excercise.pet.locator.service.PetLocationSearchService;
 
-@RestController
-@RequestMapping("/pets/locations")
+RestController
+@RequestMapping("/find")
 @Component
 public class PetLocationSearchController {
 
@@ -21,4 +21,14 @@ public class PetLocationSearchController {
 		return svc.findPetLocationsbyPetId(petId);
 	}
 	
+	@GetMapping("/lessthan24hours/{id}") 
+	public PetLocationResponse findPetLocationsByIdLessthan24Hours(@PathVariable("id")  Long id) {
+		
+		return svc.findPetLocationsByIdLessthan24Hours(id);
+	}
+	@GetMapping("/lessthan30days/{id}") 
+	public PetLocationResponse findPetLocationsByIdLessthan30days(@PathVariable("id")  Long id) {
+		
+		return svc.findPetLocationsByIdLessthan24Hours(id);
+	}
 }
