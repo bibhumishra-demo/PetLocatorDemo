@@ -11,5 +11,6 @@ import com.coding.excercise.pet.locator.Entity.PetLocation;
 public interface PetLocationRepo extends JpaRepository<PetLocation, Long>{
 
 	List<PetLocation> findAllByPetId(Long id);
+	List<PetLocation> findByLocationTimestampBefore(LocalDate localDate);
 
 }
