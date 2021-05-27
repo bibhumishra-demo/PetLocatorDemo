@@ -1,0 +1,29 @@
+---
+server:
+ port: 9093
+
+spring:
+  application:
+    name: PET-LOCATOR-GATEWAY
+  cloud:
+    gateway:
+      routes:
+      - id: employeeModule
+        uri: lb://PET-OWNER-SERVICE
+        predicates:
+        - Path=/petowners/**
+      - id: consumerModule
+        uri: lb://PET-LOCATOR-SERVICE
+        predicates:
+        - Path=/pets/**
+        - Path=/pet/**
+ 
+eureka:
+  client:
+    register-with-eureka: true
+    fetch-registry: true
+    service-url:
+      definition: http://localhost:8761/eureka
+  
+  instance:
+    hostname: localhost
